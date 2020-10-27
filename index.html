@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <a href=""
+        ><img
+          src="images/superhero1.png"
+          id="rotateBanner"
+          alt="Superheroes Banner"
+      /></a>
+    </div>
+    <script>
+      window.onload = bannerLink;
+
+      var i = 0;
+      var bannerImg = [];
+      var bannerURL = [];
+      var timer = 3000;
+
+      bannerImg[0] = "images/superhero1.png";
+      bannerImg[1] = "images/superhero2.png";
+      bannerImg[2] = "images/superhero3.png";
+      bannerImg[3] = "images/superhero4.png";
+      bannerImg[4] = "images/superhero5.png";
+      bannerImg[5] = "images/superhero6.png";
+
+      bannerURL[0] = "https://www.superherodb.com/";
+      bannerURL[1] = "https://www.superherodb.com/iron-man/10-85/";
+      bannerURL[2] = "https://www.superherodb.com/batman/10-639/";
+      bannerURL[3] = "https://www.superherodb.com/hulk/10-83/";
+      bannerURL[4] = "https://www.superherodb.com/thor/10-140/";
+      bannerURL[5] = "https://www.superherodb.com/captain-america/10-274/";
+
+      function bannerLink() {
+        if (document.getElementById("rotateBanner").parentNode.tagName == "A") {
+          document.getElementById("rotateBanner").parentNode.onclick = newPage;
+        }
+        rotateImg();
+      }
+
+      function newPage() {
+        document.location.href = bannerURL[i];
+        return false;
+      }
+
+      function rotateImg() {
+        i++;
+        if (i == bannerImg.length) {
+          i = 0;
+        }
+        document.getElementById("rotateBanner").src = bannerImg[i];
+        setTimeout(rotateImg, timer);
+      }
+    </script>
+  </body>
+</html>
